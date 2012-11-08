@@ -1,0 +1,34 @@
+	
+
+    <script>
+      var tag = document.createElement('script');
+      tag.src = "//www.youtube.com/iframe_api";
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+      var player;
+      function onYouTubeIframeAPIReady() {
+        player = new YT.Player('player', {
+          height: '190',
+          width: '380',
+          videoId: 'mu1WBMV4T1Y',
+          events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+          }
+        });
+      }
+      function onPlayerReady(event) {
+        event.target.playVideo();
+      }
+     //esta funcion activa el boton de listo
+      function onPlayerStateChange(event) {
+        if (event.data == YT.PlayerState.ENDED ) {
+			$('#readyBTN').removeClass('desactiveBTN');
+        }
+      }
+    </script>
+         
+            <p class="typ-1">Ve nuestro spot: “Food of the Goods” y da clic en el botón “¡Hecho!” una vez que se active.</p>
+            <div class="col-10 marg-L30px" id="player">     
+             </div>
+              <a href="#null" class="button big marg-T20px last desactiveBTN" id="readyBTN">LISTO</a>
